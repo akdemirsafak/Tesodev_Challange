@@ -1,6 +1,6 @@
 ﻿namespace Order.Core.UnifOfWorks;
 
-public class IUnitOfWork
+public interface IUnitOfWork
 {
     Task SaveChangesAsync();
     void SaveChanges();
