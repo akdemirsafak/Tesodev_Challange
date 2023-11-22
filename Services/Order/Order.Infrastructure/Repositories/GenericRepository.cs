@@ -1,33 +1,51 @@
-﻿using Order.Core.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using Order.Core.Repositories;
+using Order.Infrastructure.DbContexts;
 using System.Linq.Expressions;
 
 namespace Order.Infrastructure.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        public Task<TEntity> CreateAsync(TEntity entity)
+        protected readonly ApiDbContext _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
+
+        public GenericRepository(ApiDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+            _dbSet = _dbContext.Set<TEntity>();
+    
         }
 
-        public Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
+        public async Task<TEntity> CreateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            var addedEntity=await _dbSet.AddAsync(entity);
+            addedEntity.State=EntityState.Added;
+            return entity;
         }
 
-        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
+        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return await(filter == null ?
+                   _dbSet.ToListAsync() :
+                   _dbSet.Where(filter).ToListAsync());
         }
 
-        public Task RemoveAsync(TEntity entity)
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
         {
-            throw new NotImplementedException();
+            return await _dbSet.SingleOrDefaultAsync(filter);
         }
 
-        public Task UpdateAsync(TEntity entity)
+        public async Task DeleteAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            var deletedEntity = _dbSet.Remove(entity);
+            deletedEntity.State = EntityState.Deleted;
+        }
+
+        public async Task UpdateAsync(TEntity entity)
+        {
+            var updatedEntity = _dbSet.Update(entity);
+            updatedEntity.State = EntityState.Modified;
         }
     }
 }

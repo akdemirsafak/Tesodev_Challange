@@ -5,7 +5,7 @@ namespace Order.Infrastructure.DbContexts;
 
 public class ApiDbContext : DbContext
 {
-    public ApiDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+    public ApiDbContext(DbContextOptions<ApiDbContext> dbContextOptions) : base(dbContextOptions)
     {
     }
     public DbSet<Product> Products { get; set; }
