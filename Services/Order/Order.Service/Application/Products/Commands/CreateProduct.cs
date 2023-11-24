@@ -27,10 +27,17 @@ public static class CreateProduct
         {
             RuleFor(x => x.Model.Name)
                 .NotEmpty()
-                .NotNull();
-            RuleFor(x => x.Model.ImageUrl)
+                    .WithMessage("Name cannot empty.")
                 .NotNull()
-                .NotEmpty();
+                    .WithMessage("Name required.")
+                .Length(2,64)
+                    .WithMessage("Name must be 2-64 chars.");
+
+            RuleFor(x => x.Model.ImageUrl)
+                 .NotEmpty()
+                    .WithMessage("Image cannot empty.")
+                .NotNull()
+                    .WithMessage("Image required.");
         }
     } 
 }
