@@ -1,3 +1,4 @@
+using Order.API.Middlewares;
 using Order.Infrastructure;
 using Order.Service;
 var builder = WebApplication.CreateBuilder(args);
@@ -16,9 +17,6 @@ builder.Services.AddService();
 
 var app = builder.Build();
 
-
-
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -26,6 +24,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseGlobalExceptionMiddleware();
 
 app.UseHttpsRedirection();
 

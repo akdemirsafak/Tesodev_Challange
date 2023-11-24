@@ -36,10 +36,18 @@ public static class UpdateProduct
                 .NotNull();
 
             RuleFor(x => x.Model.Name)
-                .NotNull();
+                .NotEmpty()
+                    .WithMessage("Name cannot empty.")
+                .NotNull()
+                    .WithMessage("Name required.")
+                .Length(2,64)
+                    .WithMessage("Name must be 2-64 chars.");
 
             RuleFor(x => x.Model.ImageUrl)
-                .NotNull();
+                .NotEmpty()
+                    .WithMessage("Image cannot empty.")
+                .NotNull()
+                    .WithMessage("Image required.");
         }
     }
 }
