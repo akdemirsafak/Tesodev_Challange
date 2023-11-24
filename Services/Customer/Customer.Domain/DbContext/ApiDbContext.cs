@@ -12,4 +12,10 @@ public class ApiDbContext : IdentityDbContext<ApiUser, IdentityRole, string>
     }
 
     public DbSet<Address> Addresses { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<ApiUser>().Navigation(x => x.Address).AutoInclude();
+        base.OnModelCreating(builder);
+    }
 }

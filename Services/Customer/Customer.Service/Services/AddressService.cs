@@ -1,13 +1,13 @@
 ﻿using Customer.Domain.Entity;
-using Customer.Domain.Models;
 using Customer.Domain.Models.Address;
 using Mapster;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Shared.Library;
 
 namespace Customer.Service.Services;
 
-public class AddressService(UserManager<ApiUser> _userManager) : IAdressService
+public class AddressService(UserManager<ApiUser> _userManager) : IAddressService
 {
     public async Task<ApiResponse<NoContent>> AddAdressAsync(AddAddressRequest request, string userId)
     {

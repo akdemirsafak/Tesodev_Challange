@@ -2,10 +2,10 @@
 using Mapster;
 using Order.Core.Repositories;
 using Order.Core.UnifOfWorks;
-using Order.Model.Common;
 using Order.Model.Requests.Products;
 using Order.Model.Responses.Product;
 using Order.Service.Common;
+using Shared.Library;
 
 namespace Order.Service.Application.Products.Commands;
 

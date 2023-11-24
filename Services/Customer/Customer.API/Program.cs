@@ -56,6 +56,7 @@ builder.Services.Configure<ApiTokenOptions>(builder.Configuration.GetSection("Ap
 
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 

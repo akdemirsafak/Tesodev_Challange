@@ -3,6 +3,7 @@ using Customer.Domain.Models;
 using Customer.Domain.Models.Auth;
 using Customer.Service.TokenOperations;
 using Microsoft.AspNetCore.Identity;
+using Shared.Library;
 
 namespace Customer.Service.Services;
 

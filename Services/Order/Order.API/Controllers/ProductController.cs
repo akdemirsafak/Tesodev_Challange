@@ -5,14 +5,19 @@ using Order.Model.Requests.Products;
 using Order.Service.Application.Product.Queries;
 using Order.Service.Application.Products.Commands;
 using Order.Service.Application.Products.Queries;
+using Shared.Library.CustomControllerBase;
 
 namespace Order.API.Controllers;
 
 public class ProductController : CustomBaseController
 {
-    public ProductController(IMediator _meditor) : base(_meditor)
+    private readonly IMediator _mediator;
+
+    public ProductController(IMediator mediator)
     {
+        _mediator = mediator;
     }
+
     [HttpGet]
     public async Task<IActionResult> Get()
     {

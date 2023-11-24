@@ -3,14 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 using Order.Model.Requests.Orders;
 using Order.Service.Application.Orders.Commands;
 using Order.Service.Application.Orders.Queries;
+using Shared.Library.CustomControllerBase;
 
 namespace Order.API.Controllers;
 
 public class OrderController : CustomBaseController
 {
-    public OrderController(IMediator _meditor) : base(_meditor)
+    private readonly IMediator _mediator;
+
+    public OrderController(IMediator mediator)
     {
+        _mediator = mediator;
     }
+
     [HttpGet]
     public async Task<IActionResult> Get()
     {
