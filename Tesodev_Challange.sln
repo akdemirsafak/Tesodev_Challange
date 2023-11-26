@@ -29,7 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{186E36
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Library", "Shared\Shared.Library\Shared.Library.csproj", "{6F7D414E-14C6-45C6-AE62-4A9CE2B0C9F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Tests", "Services\Order\Order.Tests\Order.Tests.csproj", "{A7CA8EF3-9A5B-475D-8EB3-9A0E669DDA04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Tests", "Services\Order\Order.Tests\Order.Tests.csproj", "{A7CA8EF3-9A5B-475D-8EB3-9A0E669DDA04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tesodev.Gateway", "Gateways\Tesodev.Gateway\Tesodev.Gateway.csproj", "{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{A7CA8EF3-9A5B-475D-8EB3-9A0E669DDA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7CA8EF3-9A5B-475D-8EB3-9A0E669DDA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7CA8EF3-9A5B-475D-8EB3-9A0E669DDA04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,7 +100,6 @@ Global
 		{B3E71FEB-3CFD-4ED9-9806-2A0CBFECC19E} = {D7EEB9DD-4C2C-4DF9-855C-89672D1461DF}
 		{6F7D414E-14C6-45C6-AE62-4A9CE2B0C9F6} = {186E36BD-2E04-4115-A31A-2E813CE89902}
 		{A7CA8EF3-9A5B-475D-8EB3-9A0E669DDA04} = {CB9A8A68-6BAF-44FD-B908-0FFEFEA91B83}
-		{3270BC8B-608E-4860-98DA-37B9288A2989} = {35283605-181E-4C43-9F0D-D6A850D9F101}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A824EFFD-0C1B-49BE-866E-D4A92B9ABA11}
