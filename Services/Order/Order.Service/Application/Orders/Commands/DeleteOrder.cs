@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Order.Core.Repositories;
 using Order.Core.UnifOfWorks;
-using Order.Model.Common;
 using Order.Service.Common;
+using Shared.Library;
 
 namespace Order.Service.Application.Orders.Commands;
 

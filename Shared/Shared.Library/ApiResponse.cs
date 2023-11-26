@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Order.Model.Common;
+namespace Shared.Library;
 
 public class ApiResponse<T>
 {
@@ -8,6 +8,7 @@ public class ApiResponse<T>
     public List<string> Errors { get; set; }
     [JsonIgnore] public int StatusCode { get; set; }
 
+    //Static Factory Method
     public static ApiResponse<T> Success(T Data, int statusCode = 200)
     {
         return new ApiResponse<T> { Data = Data, StatusCode = statusCode };

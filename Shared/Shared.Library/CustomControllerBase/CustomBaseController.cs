@@ -1,20 +1,11 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Order.Model.Common;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Order.API.Controllers
+namespace Shared.Library.CustomControllerBase
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CustomBaseController : ControllerBase
     {
-        protected readonly IMediator _mediator;
-
-        public CustomBaseController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
         [NonAction]
         public IActionResult CreateActionResult<T>(ApiResponse<T> response)
         {

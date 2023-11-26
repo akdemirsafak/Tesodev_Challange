@@ -2,10 +2,10 @@
 using Mapster;
 using Order.Core.Repositories;
 using Order.Core.UnifOfWorks;
-using Order.Model.Common;
 using Order.Model.Requests.Products;
 using Order.Model.Responses.Product;
 using Order.Service.Common;
+using Shared.Library;
 
 namespace Order.Service.Application.Products.Commands;
 
@@ -36,10 +36,18 @@ public static class UpdateProduct
                 .NotNull();
 
             RuleFor(x => x.Model.Name)
-                .NotNull();
+                .NotEmpty()
+                    .WithMessage("Name cannot empty.")
+                .NotNull()
+                    .WithMessage("Name required.")
+                .Length(2,64)
+                    .WithMessage("Name must be 2-64 chars.");
 
             RuleFor(x => x.Model.ImageUrl)
-                .NotNull();
+                .NotEmpty()
+                    .WithMessage("Image cannot empty.")
+                .NotNull()
+                    .WithMessage("Image required.");
         }
     }
 }

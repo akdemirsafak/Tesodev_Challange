@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Mapster;
 using Order.Core.Repositories;
-using Order.Model.Common;
 using Order.Model.Responses.Orders;
 using Order.Service.Common;
+using Shared.Library;
 
 namespace Order.Service.Application.Orders.Queries;
 
