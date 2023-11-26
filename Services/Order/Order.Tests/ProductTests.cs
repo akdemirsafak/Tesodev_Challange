@@ -143,7 +143,7 @@ public class ProductTests
             ImageUrl=newProductValues.ImageUrl
         };
 
-        var request = new DeleteProductRequest(newProductValues.Name, newProductValues.ImageUrl);
+        var request = new UpdateProductRequest(newProductValues.Name, newProductValues.ImageUrl);
         var command = new UpdateProduct.Command(product.Id, request);
         var commandHandler = new UpdateProduct.CommandHandler(_productRepository, _unitOfWork);
 
