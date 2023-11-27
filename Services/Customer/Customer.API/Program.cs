@@ -1,12 +1,12 @@
 using Customer.Domain.DbContext;
 using Customer.Domain.Entity;
-using Customer.Service.Helper;
 using Customer.Service.Services;
 using Customer.Service.TokenOperations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Library.Helper;
 using System.Reflection;
 using System.Text;
 
