@@ -1,12 +1,13 @@
 ﻿using Customer.Domain.Models.Address;
-using Customer.Service.Helper;
 using Customer.Service.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Library.CustomControllerBase;
+using Shared.Library.Helper;
 
 namespace Customer.API.Controllers;
 
-
+[Authorize]
 public class AddressController(IAddressService _adressService,ICurrentUser _currentUser) : CustomBaseController
 {
     [HttpGet]

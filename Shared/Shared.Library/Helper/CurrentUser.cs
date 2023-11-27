@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace Customer.Service.Helper;
+namespace Shared.Library.Helper;
 
 public class CurrentUser(IHttpContextAccessor _httpContextAccessor) : ICurrentUser
 {

@@ -1,4 +1,4 @@
-﻿namespace Customer.Service.Helper;
+﻿namespace Shared.Library.Helper;
 
 public interface ICurrentUser
 {
