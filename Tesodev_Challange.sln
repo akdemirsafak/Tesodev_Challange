@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Tests", "Services\Ord
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tesodev.Gateway", "Gateways\Tesodev.Gateway\Tesodev.Gateway.csproj", "{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Jwt", "Shared.Jwt\Shared.Jwt.csproj", "{4FE488BD-1A16-4C07-8BAF-C3D658CD0B9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E600270-E1AB-4524-B3A1-8FB76AB63B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE488BD-1A16-4C07-8BAF-C3D658CD0B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE488BD-1A16-4C07-8BAF-C3D658CD0B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE488BD-1A16-4C07-8BAF-C3D658CD0B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE488BD-1A16-4C07-8BAF-C3D658CD0B9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{B3E71FEB-3CFD-4ED9-9806-2A0CBFECC19E} = {D7EEB9DD-4C2C-4DF9-855C-89672D1461DF}
 		{6F7D414E-14C6-45C6-AE62-4A9CE2B0C9F6} = {186E36BD-2E04-4115-A31A-2E813CE89902}
 		{A7CA8EF3-9A5B-475D-8EB3-9A0E669DDA04} = {CB9A8A68-6BAF-44FD-B908-0FFEFEA91B83}
+		{4FE488BD-1A16-4C07-8BAF-C3D658CD0B9C} = {186E36BD-2E04-4115-A31A-2E813CE89902}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A824EFFD-0C1B-49BE-866E-D4A92B9ABA11}

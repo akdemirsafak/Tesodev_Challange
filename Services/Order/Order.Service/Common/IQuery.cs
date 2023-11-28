@@ -2,6 +2,6 @@
 
 namespace Order.Service.Common;
 
-public interface IQuery<out TResponse>:IRequest<TResponse>
+public interface IQuery<out TResponse> : IRequest<TResponse>
 {
 }

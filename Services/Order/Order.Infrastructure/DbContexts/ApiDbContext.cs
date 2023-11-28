@@ -13,8 +13,8 @@ public class ApiDbContext : DbContext
     public DbSet<Address> Adresses { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Order.Core.Entities.Order>().Navigation(x=>x.Product).AutoInclude();
-        modelBuilder.Entity<Order.Core.Entities.Order>().Navigation(o=>o.Adress).AutoInclude();
+        modelBuilder.Entity<Order.Core.Entities.Order>().Navigation(x => x.Product).AutoInclude();
+        modelBuilder.Entity<Order.Core.Entities.Order>().Navigation(o => o.Adress).AutoInclude();
         base.OnModelCreating(modelBuilder);
     }
 

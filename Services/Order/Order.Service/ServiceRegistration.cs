@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Order.Service.Application.Products.Commands;
 using Order.Service.Behaviors;
+using Shared.Library.Helper;
 using System.Reflection;
 
 namespace Order.Service;
@@ -15,5 +16,6 @@ public static class ServiceRegistration
         serviceCollection.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         serviceCollection.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        serviceCollection.AddScoped<ICurrentUser, CurrentUser>();
     }
 }

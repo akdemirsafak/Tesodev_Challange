@@ -8,7 +8,7 @@ using Shared.Library.Helper;
 namespace Customer.API.Controllers;
 
 [Authorize]
-public class AddressController(IAddressService _adressService,ICurrentUser _currentUser) : CustomBaseController
+public class AddressController(IAddressService _adressService, ICurrentUser _currentUser) : CustomBaseController
 {
     [HttpGet]
     public async Task<IActionResult> Get()
@@ -19,7 +19,7 @@ public class AddressController(IAddressService _adressService,ICurrentUser _curr
     public async Task<IActionResult> AddAddress(AddAddressRequest request)
     {
 
-        return CreateActionResult(await _adressService.AddAdressAsync(request,_currentUser.GetUserId));
+        return CreateActionResult(await _adressService.AddAdressAsync(request, _currentUser.GetUserId));
     }
     [HttpPost("UpdateAddress")]
     public async Task<IActionResult> UpdateAddress(UpdateAddressRequest request)

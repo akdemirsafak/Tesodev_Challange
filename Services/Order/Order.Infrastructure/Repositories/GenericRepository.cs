@@ -14,19 +14,19 @@ namespace Order.Infrastructure.Repositories
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
-    
+
         }
 
         public async Task<TEntity> CreateAsync(TEntity entity)
         {
             var addedEntity=await _dbSet.AddAsync(entity);
-            addedEntity.State=EntityState.Added;
+            addedEntity.State = EntityState.Added;
             return entity;
         }
 
         public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            return await(filter == null ?
+            return await (filter == null ?
                    _dbSet.ToListAsync() :
                    _dbSet.Where(filter).ToListAsync());
         }

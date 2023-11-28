@@ -1,15 +1,10 @@
 ﻿using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Shared.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddAuthentication()
-//    .AddJwtBearer("GatewayAuthenticationScheme", opt => 
-//    {
-//        opt.Authority = builder.Configuration["IdentityServerURL"];
-//        opt.Audience = "resource_gateway";
-//        opt.RequireHttpsMetadata = false;
-//    });
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 builder.Services.AddOcelot();
 

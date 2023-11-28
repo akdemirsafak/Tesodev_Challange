@@ -9,8 +9,8 @@ namespace Order.Service.Application.Products.Commands;
 
 public static class DeleteProduct
 {
-    public record Command(Guid Id) :ICommand<ApiResponse<NoContent>>;
-    public class CommandHandler(IGenericRepository<Order.Core.Entities.Product> _productRepository,IUnitOfWork _unitOfWork) : ICommandHandler<Command, ApiResponse<NoContent>>
+    public record Command(Guid Id) : ICommand<ApiResponse<NoContent>>;
+    public class CommandHandler(IGenericRepository<Order.Core.Entities.Product> _productRepository, IUnitOfWork _unitOfWork) : ICommandHandler<Command, ApiResponse<NoContent>>
     {
         public async Task<ApiResponse<NoContent>> Handle(Command request, CancellationToken cancellationToken)
         {
@@ -26,7 +26,7 @@ public static class DeleteProduct
     {
         public DeleteProductCommandValidator()
         {
-            RuleFor(x=>x.Id)
+            RuleFor(x => x.Id)
                 .NotNull();
         }
     }

@@ -9,15 +9,15 @@ namespace Order.Service.Application.Orders.Commands;
 
 public static class DeleteOrder
 {
-    public record Command(Guid Id) : ICommand<ApiResponse<NoContent>>;
+    public record Command(Guid Id, string CustomerId) : ICommand<ApiResponse<NoContent>>;
 
     public class CommandHandler(IGenericRepository<Order.Core.Entities.Order> _orderRepository, IUnitOfWork _unitOfWork)
         : ICommandHandler<Command, ApiResponse<NoContent>>
     {
         public async Task<ApiResponse<NoContent>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id);
-            
+            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==request.CustomerId);
+
             if (existOrder is null)
                 return ApiResponse<NoContent>.Fail("Order not found.", 404);
 

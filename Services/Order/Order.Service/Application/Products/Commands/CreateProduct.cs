@@ -11,8 +11,8 @@ namespace Order.Service.Application.Products.Commands;
 
 public static class CreateProduct
 {
-    public record Command(CreateProductRequest Model):ICommand<ApiResponse<CreatedProductResponse>>;
-    public class CommandHandler(IGenericRepository<Order.Core.Entities.Product> _productRepository,IUnitOfWork _unitOfWork) : ICommandHandler<Command, ApiResponse<CreatedProductResponse>>
+    public record Command(CreateProductRequest Model) : ICommand<ApiResponse<CreatedProductResponse>>;
+    public class CommandHandler(IGenericRepository<Order.Core.Entities.Product> _productRepository, IUnitOfWork _unitOfWork) : ICommandHandler<Command, ApiResponse<CreatedProductResponse>>
     {
         public async Task<ApiResponse<CreatedProductResponse>> Handle(Command request, CancellationToken cancellationToken)
         {
@@ -22,7 +22,8 @@ public static class CreateProduct
             return ApiResponse<CreatedProductResponse>.Success(entity.Adapt<CreatedProductResponse>(), 201);
         }
     }
-    public class CreateProductCommandValidator : AbstractValidator<Command> {
+    public class CreateProductCommandValidator : AbstractValidator<Command>
+    {
         public CreateProductCommandValidator()
         {
             RuleFor(x => x.Model.Name)
@@ -30,7 +31,7 @@ public static class CreateProduct
                     .WithMessage("Name cannot empty.")
                 .NotNull()
                     .WithMessage("Name required.")
-                .Length(2,64)
+                .Length(2, 64)
                     .WithMessage("Name must be 2-64 chars.");
 
             RuleFor(x => x.Model.ImageUrl)
@@ -39,5 +40,5 @@ public static class CreateProduct
                 .NotNull()
                     .WithMessage("Image required.");
         }
-    } 
+    }
 }

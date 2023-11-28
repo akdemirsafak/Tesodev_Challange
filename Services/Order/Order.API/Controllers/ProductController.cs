@@ -34,7 +34,7 @@ public class ProductController : CustomBaseController
         return CreateActionResult(await _mediator.Send(new CreateProduct.Command(request)));
     }
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id,UpdateProductRequest request)
+    public async Task<IActionResult> Update(Guid id, UpdateProductRequest request)
     {
         return CreateActionResult(await _mediator.Send(new UpdateProduct.Command(id, request)));
     }

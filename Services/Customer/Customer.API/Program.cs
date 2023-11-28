@@ -2,13 +2,11 @@ using Customer.Domain.DbContext;
 using Customer.Domain.Entity;
 using Customer.Service.Services;
 using Customer.Service.TokenOperations;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+using Shared.Jwt;
 using Shared.Library.Helper;
 using System.Reflection;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,30 +25,15 @@ builder.Services.AddDbContext<ApiDbContext>(opt =>
     option => { option.MigrationsAssembly(Assembly.GetAssembly(typeof(ApiDbContext))!.GetName().Name); });
 });
 
-var tokenOptions = builder.Configuration.GetSection("ApiTokenOptions").Get<ApiTokenOptions>();
 
 builder.Services.AddIdentity<ApiUser, IdentityRole>(
         x => { x.User.RequireUniqueEmail = true; })
     .AddEntityFrameworkStores<ApiDbContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidIssuer = tokenOptions!.Issuer,
-        ValidAudience = tokenOptions.Audience,
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey))
-    };
-});
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
+var tokenOptions = builder.Configuration.GetSection("ApiTokenOptions").Get<ApiTokenOptions>();
 
 builder.Services.Configure<ApiTokenOptions>(builder.Configuration.GetSection("ApiTokenOptions"));
 
