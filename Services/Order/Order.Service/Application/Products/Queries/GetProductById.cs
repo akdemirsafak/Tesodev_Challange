@@ -22,7 +22,7 @@ public static class GetProductById
     {
         public GetProductByIdCommandValidator()
         {
-            RuleFor(x=>x.Id)
+            RuleFor(x => x.Id)
                 .NotNull();
         }
     }

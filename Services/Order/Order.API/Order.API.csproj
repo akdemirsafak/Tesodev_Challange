@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared.Jwt\Shared.Jwt.csproj" />
     <ProjectReference Include="..\Order.Service\Order.Service.csproj" />
   </ItemGroup>
 

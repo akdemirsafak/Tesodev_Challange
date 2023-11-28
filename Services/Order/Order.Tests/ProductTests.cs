@@ -20,8 +20,8 @@ public class ProductTests
     private readonly IUnitOfWork _unitOfWork;
     public ProductTests()
     {
-        _productRepository=Substitute.For<IGenericRepository<Product>>();
-        _unitOfWork=Substitute.For<IUnitOfWork>();
+        _productRepository = Substitute.For<IGenericRepository<Product>>();
+        _unitOfWork = Substitute.For<IUnitOfWork>();
     }
 
     [Fact]
@@ -101,7 +101,7 @@ public class ProductTests
         };
         _productRepository.CreateAsync(Arg.Any<Product>()).Returns(Task.FromResult(product));
         var createdProducResponse=product.Adapt<CreatedProductResponse>();
-    
+
 
         var request = new CreateProductRequest(product.Name, product.ImageUrl);
         var command = new CreateProduct.Command(request);

@@ -10,7 +10,7 @@ public class OrderTests
     private readonly IUnitOfWork _unitOfWork;
     public OrderTests()
     {
-        _orderRepository = Substitute.For<IGenericRepository<Order.Core.Entities.Order>>(); 
+        _orderRepository = Substitute.For<IGenericRepository<Order.Core.Entities.Order>>();
         _unitOfWork = Substitute.For<IUnitOfWork>();
     }
 

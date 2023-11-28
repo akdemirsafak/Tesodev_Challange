@@ -1,3 +1,3 @@
 ﻿namespace Order.Model.Requests.Product;
 
-public record CreateProductRequest(string Name,string ImageUrl);
+public record CreateProductRequest(string Name, string ImageUrl);

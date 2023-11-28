@@ -8,7 +8,7 @@ namespace Order.Service.Application.Product.Queries;
 
 public static class GetProducts
 {
-    public record Query():IQuery<ApiResponse<List<GetProductResponse>>>;
+    public record Query() : IQuery<ApiResponse<List<GetProductResponse>>>;
     public class QueryHandler(IGenericRepository<Order.Core.Entities.Product> _productRepository) : IQueryHandler<Query, ApiResponse<List<GetProductResponse>>>
     {
         public async Task<ApiResponse<List<GetProductResponse>>> Handle(Query request, CancellationToken cancellationToken)

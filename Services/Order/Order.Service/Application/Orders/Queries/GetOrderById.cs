@@ -9,12 +9,12 @@ namespace Order.Service.Application.Orders.Queries;
 
 public static class GetOrderById
 {
-    public record Query(Guid Id) : IQuery<ApiResponse<GetOrderResponse>>;
+    public record Query(Guid Id, string CustomerId) : IQuery<ApiResponse<GetOrderResponse>>;
     public class QueryHandler(IGenericRepository<Order.Core.Entities.Order> _orderRepository) : IQueryHandler<Query, ApiResponse<GetOrderResponse>>
     {
         public async Task<ApiResponse<GetOrderResponse>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id);
+            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==request.CustomerId);
 
             if (existOrder is null)
                 return ApiResponse<GetOrderResponse>.Fail("Order not found.", 404);
@@ -26,7 +26,7 @@ public static class GetOrderById
     {
         public GetOrderByIdQueryValidator()
         {
-            RuleFor(x=>x.Id)
+            RuleFor(x => x.Id)
                 .NotNull();
         }
     }

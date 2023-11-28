@@ -12,13 +12,13 @@ namespace Order.Infrastructure;
 
 public static class ServiceRegistration
 {
-    public static void AddInfrastructure(this IServiceCollection services,IConfiguration configuration)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<ApiDbContext>(
             opt =>
             {
-                opt.UseNpgsql(configuration.GetConnectionString("PostgresqlDbConnection"), 
-                    option =>  { option.MigrationsAssembly(Assembly.GetAssembly(typeof(ApiDbContext))!.GetName().Name); });
+                opt.UseNpgsql(configuration.GetConnectionString("PostgresqlDbConnection"),
+                    option => { option.MigrationsAssembly(Assembly.GetAssembly(typeof(ApiDbContext))!.GetName().Name); });
             });
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 

@@ -33,7 +33,7 @@ public class AuthService(UserManager<ApiUser> _userManager, ITokenService _token
             Email=request.Email
         };
         var createResult=await _userManager.CreateAsync(user,request.Password);
-        if(!createResult.Succeeded)
+        if (!createResult.Succeeded)
         {
             return ApiResponse<ApiTokenResponse>.Fail(createResult.Errors.First().Description, 500);
         }

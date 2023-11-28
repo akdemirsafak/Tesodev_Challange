@@ -11,14 +11,16 @@ namespace Order.Service.Application.Orders.Commands;
 
 public static class CreateOrder
 {
-    public record Command(CreateOrderRequest Model) : ICommand<ApiResponse<CreatedOrderResponse>>;
+    public record Command(CreateOrderRequest Model, string CustomerId) : ICommand<ApiResponse<CreatedOrderResponse>>;
 
-    public class CommandHandler(IGenericRepository<Order.Core.Entities.Order> _orderRepository, IUnitOfWork _unitOfWork) 
+    public class CommandHandler(IGenericRepository<Order.Core.Entities.Order> _orderRepository, IUnitOfWork _unitOfWork)
         : ICommandHandler<Command, ApiResponse<CreatedOrderResponse>>
     {
         public async Task<ApiResponse<CreatedOrderResponse>> Handle(Command request, CancellationToken cancellationToken)
         {
             var response=await _orderRepository.CreateAsync(request.Model.Adapt<Order.Core.Entities.Order>());
+            response.CustomerId = request.CustomerId;
+            response.Adress = new Core.Entities.Address { Id = request.Model.AdressId };
             await _unitOfWork.SaveChangesAsync();
             return ApiResponse<CreatedOrderResponse>.Success(response.Adapt<CreatedOrderResponse>(), 201);
         }
@@ -31,9 +33,6 @@ public static class CreateOrder
                 .NotNull();
 
             RuleFor(x => x.Model.ProductId)
-                .NotNull();
-
-            RuleFor(x => x.Model.CustomerId)
                 .NotNull();
 
             RuleFor(x => x.Model.Status)
