@@ -14,7 +14,7 @@ public static class GetOrderById
     {
         public async Task<ApiResponse<GetOrderResponse>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==request.CustomerId);
+            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==Guid.Parse(request.CustomerId));
 
             if (existOrder is null)
                 return ApiResponse<GetOrderResponse>.Fail("Order not found.", 404);
