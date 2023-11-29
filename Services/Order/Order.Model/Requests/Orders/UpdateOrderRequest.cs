@@ -4,5 +4,5 @@ public record UpdateOrderRequest(
     int Quantity,
     double Price,
     string Status,
-    Guid AdressId,
+    //Guid AdressId,
     Guid ProductId);

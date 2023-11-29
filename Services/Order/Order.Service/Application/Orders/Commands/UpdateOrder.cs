@@ -18,7 +18,7 @@ public static class UpdateOrder
     {
         public async Task<ApiResponse<UpdatedOrderResponse>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==request.CustomerId);
+            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==Guid.Parse(request.CustomerId));
             if (existOrder is null)
                 return ApiResponse<UpdatedOrderResponse>.Fail("Order not found.", 404);
 
@@ -26,7 +26,7 @@ public static class UpdateOrder
             existOrder.Status = request.Model.Status;
             existOrder.Quantity = request.Model.Quantity;
             existOrder.Price = request.Model.Price;
-            existOrder.Adress.Id = request.Model.AdressId; // Customer Id'den Address'i çekelim
+            //existOrder.Adress.Id = request.Model.AdressId; // Customer Id'den Address'i çekelim
             existOrder.UpdatedAt = DateTime.UtcNow;
 
             await _orderRepository.UpdateAsync(existOrder);

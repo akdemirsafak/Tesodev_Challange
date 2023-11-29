@@ -14,7 +14,7 @@ public static class GetOrders
     {
         public async Task<ApiResponse<List<GetOrderResponse>>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var orders= await _orderRepository.GetAllAsync(x=>x.CustomerId== request.CustomerId);
+            var orders= await _orderRepository.GetAllAsync(x=>x.CustomerId == Guid.Parse(request.CustomerId));
             return ApiResponse<List<GetOrderResponse>>.Success(orders.Adapt<List<GetOrderResponse>>());
         }
     }

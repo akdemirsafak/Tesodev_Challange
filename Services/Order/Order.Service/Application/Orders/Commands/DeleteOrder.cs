@@ -16,12 +16,15 @@ public static class DeleteOrder
     {
         public async Task<ApiResponse<NoContent>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==request.CustomerId);
+            var existOrder= await _orderRepository.GetAsync(x=>x.Id==request.Id && x.CustomerId==Guid.Parse(request.CustomerId));
 
             if (existOrder is null)
                 return ApiResponse<NoContent>.Fail("Order not found.", 404);
 
-            await _orderRepository.DeleteAsync(existOrder);
+            existOrder.Status = "passive";
+            await _orderRepository.UpdateAsync(existOrder);
+
+            //await _orderRepository.DeleteAsync(existOrder);
             await _unitOfWork.SaveChangesAsync();
 
             return ApiResponse<NoContent>.Success(204);
