@@ -40,8 +40,8 @@ public static class UpdateOrder
         {
             RuleFor(x => x.Id)
                 .NotNull();
-            RuleFor(x => x.Model.AdressId)
-         .NotNull();
+         //   RuleFor(x => x.Model.AdressId)
+         //.NotNull();
 
             RuleFor(x => x.Model.ProductId)
                 .NotNull();

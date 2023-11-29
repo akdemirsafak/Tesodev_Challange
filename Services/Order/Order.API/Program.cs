@@ -1,3 +1,4 @@
+using Hangfire;
 using Order.API.Middlewares;
 using Order.Infrastructure;
 using Order.Service;
@@ -17,7 +18,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
 builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddService();
+builder.Services.AddService(builder.Configuration);
 
 builder.Services.AddHttpClient();
 
@@ -31,6 +32,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseGlobalExceptionMiddleware();
+
+app.UseHangfireDashboard();
 
 app.UseHttpsRedirection();
 
